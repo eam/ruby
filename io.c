@@ -7116,7 +7116,7 @@ rb_io_puts(int argc, const VALUE *argv, VALUE out)
 	rb_io_write(out, line);
 	if (RSTRING_LEN(line) == 0 ||
             !str_end_with_asciichar(line, '\n')) {
-	    rb_io_write(out, rb_default_rs);
+	    rb_io_write(out, TYPE(rb_output_rs) == T_NIL ? rb_default_rs : rb_output_rs);
 	}
     }
 
